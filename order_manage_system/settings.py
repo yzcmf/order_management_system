@@ -122,6 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-import mimetypes
-mimetypes.add_type('text/css', '.css')
-mimetypes.add_type('application/javascript', '.js')
+# import mimetypes
+# mimetypes.add_type('text/css', '.css')
+# mimetypes.add_type('application/javascript', '.js')

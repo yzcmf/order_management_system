@@ -21,4 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('sales/', include('sales.urls')),
     path('api/mgr/', include('mgr.urls')),
-]  +  static("/", document_root="./z_dist1")
+]  +  static("/", document_root="./z_dist2")
