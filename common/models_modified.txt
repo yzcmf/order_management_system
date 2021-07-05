@@ -1,0 +1,52 @@
+from django.db import models
+import datetime
+
+# Create your models here.
+
+class Customer(models.Model):
+    # 客户名称
+    name = models.CharField(max_length=200)
+
+    # 联系电话
+    phonenumber = models.CharField(max_length=200)
+
+    # 地址
+    address = models.CharField(max_length=200)
+
+
+class Food(models.Model):
+    # 食物
+    name = models.CharField(max_length=200)
+    # 食物编号
+    sn = models.CharField(max_length=200)
+    # 描述
+    desc = models.CharField(max_length=200)
+
+
+
+class Order(models.Model):
+    # 订单名
+    name = models.CharField(max_length=200,null=True,blank=True)
+
+    # 创建日期
+    create_date = models.DateTimeField(default=datetime.datetime.now)
+
+    # 客户
+    customer = models.ForeignKey(Customer,on_delete=models.PROTECT)
+
+    # 订单购买的食品，和Food 表是多对多 的关系
+    food = models.ManyToManyField(Food, through='OrderFood')
+
+
+class OrderFood(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    food = models.ForeignKey(Food, on_delete=models.PROTECT)
+
+    # 订单中食品的数量
+    amount = models.PositiveIntegerField()
+
+
+
+
+
+
